@@ -1,0 +1,156 @@
+body{
+    background-color: rgb(225, 212, 193);
+ }
+ header {
+    background-color: darkolivegreen;
+    font-size:150%;
+    font-family: 'Courier New';
+    font-size: 50px;
+    display: flex;
+    border-bottom: 2px solid #000000;
+    padding: 30px;
+    justify-content: space-between;
+    margin-bottom: 40px;
+ }
+ .logo {
+    color: rgb(225, 212, 193);
+    font-size: 60px;
+    font-family: 'Snell Roundhand';
+    text-shadow: #683b04 0px 0px 2px, #683b04 0px 0px 2px, #683b04 0px 0px 2px;
+    line-height: 70%;
+ }
+ .container {
+    display: flex;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+ }
+ .homeText {
+    margin-left: 20px;
+    flex-grow: 1;
+    flex-basis: 20%;
+ }
+ .homeImage {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    display: flex;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ img {
+    max-width: 100%;
+    max-height:100%;
+    border-radius: 4px;
+ }
+ p {
+    font-family: "Courier New";
+    font-size: 35px;
+    color: darkolivegreen;
+    text-align: center;
+ }
+ iframe {
+    align-items: center;
+ }
+ table {
+    width: 400px;
+ }
+ th,
+ td {
+    padding: 0px 60px;
+ }
+ /*#container {
+   display: flex;
+   gap: 20px;
+   flex-direction: row-reverse;
+   justify-content: center;
+   flex-wrap: wrap;
+ }*/
+ /* gallery as a 3-column grid */
+ 
+ 
+ 
+ 
+ /* 1) Center everything in each grid cell: */
+ #gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 20px;
+    justify-items: center;    /* ← add this */
+ }
+ 
+ 
+ /* 2) Also make each “photo” wrapper center its contents: */
+ .photo {
+    padding: 10px;
+    text-align: center;       /* ← add this */
+ }
+ 
+ 
+ 
+ 
+ .image img{
+    width: 2000px;
+ }
+ .photo {
+    padding: 10px;
+ 
+ 
+ 
+ 
+ }
+ .photo img {
+    width: 400px;
+ }
+ .photo p {
+    text-align: center;
+ }
+ .containerBook {
+    flex-wrap: wrap;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ footer {
+    background-color: darkolivegreen;
+    color: rgb(225, 212, 193);
+    font-family: 'Courier New';
+    font-size: 20px;
+    display: flex;
+    border-bottom: 2px solid #000000;
+    padding: 5px;
+    justify-content: center;
+    margin-top: 100px;
+    /*position: fixed;
+    bottom: 0;
+    width: 100%;*/
+ }
+ 
+ 
+ 
+ 
+ /* youtube home page*/
+ .video-container {
+    width: 100%;
+ }
+ .video-container iframe {
+    display: block;
+    margin: 0 auto;
+ }
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,167 @@
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>BitPix Studios</title>
+ <link rel="stylesheet" href="StyleWebsiteProjectStuff.css">
+</head>
+<body>
+
+
+
+
+<header>
+ <span> <a href = 'WebsiteProjectStuff.html' class="logo"  style= "text-decoration: none; font-size: 60px;">BitPix Studios</a> </span>
+ <nav style ="color: rgb(225, 212, 193);">
+   <a href="AboutMe.html" style="color:inherit; text-decoration: none">About Us</a>
+   <a href="Portfolio.html" style = "color:inherit; text-decoration: none" >Portfolio</a>
+   <a href="Booking.html" style = "color:inherit; text-decoration: none">Booking</a>
+ </nav>
+</header>
+
+
+
+<body>
+    <h2 style="font-family: 'Courier New'; font-size: 50px; color: darkolivegreen;">Book With Us!</h2>
+    <form id="reservationForm">
+      <label for="name" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Name:</label><br />
+      <input type="text" id="name" required /><br /><br />
+  
+      <label for="email" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Email:</label><br />
+      <input type="text" id="email" required /><br /><br />
+  
+      <label for="phone" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Phone Number:</label><br />
+      <input type="text" id="phone" required /><br /><br />
+  
+      <label for="partySize" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Party Size:</label><br />
+      <input type="number" id="partySize" required /><br /><br />
+  
+      <label for="location" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Location:</label><br />
+      <input type="text" id="location" required /><br /><br />
+  
+      <label for="datetime" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Date & Time:</label><br />
+      <input type="datetime-local" id="datetime" required /><br /><br />
+  
+      <label for="pricing" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Pricing:</label><br />
+      <input type="text" id="pricing" required /><br /><br />
+  
+      <label for="any" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Notes/Anything We Should Know?</label><br />
+      <input type="text" id="any" /><br /><br />
+  
+      <button type="submit" style="font-family: 'Courier New'; font-size: 35px; color: darkolivegreen;">Submit Reservation</button>
+    </form>
+  
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+    // Firebase config
+    const firebaseConfig = {
+        apiKey: "AIzaSyDObwLn8SvKIUViHjOPvAbnQYZCDLq7ovw",
+        authDomain: "bitpixreadme.firebaseapp.com",
+        projectId: "bitpixreadme",
+        storageBucket: "bitpixreadme.firebasestorage.app",
+        messagingSenderId: "838918672873",
+        appId: "1:838918672873:web:098129416e507d72313b78"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.getElementById('reservationForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const Name = document.getElementById('name').value;
+      const Email = document.getElementById('email').value;
+      const PhoneNumber = document.getElementById('phone').value;
+      const PartySize = parseInt(document.getElementById('partySize').value);
+      const Location = document.getElementById('location').value;
+      const Pricing = document.getElementById('pricing').value;
+      const any = document.getElementById('any').value;
+      const datetime = document.getElementById('datetime').value;
+
+      // Convert input string (e.g., "2025-06-15T19:30") to JS Date and then Firestore Timestamp
+      const reservationDate = Timestamp.fromDate(new Date(datetime));
+
+      try {
+        await addDoc(collection(db, "Bookings"), {
+          Name,
+          Email,
+          PhoneNumber,
+          PartySize,
+          Location,
+          Pricing,
+          any,
+          datetime: reservationDate,
+          createdAt: Timestamp.now()
+        });
+        alert("Reservation submitted successfully!");
+        document.getElementById('reservationForm').reset();
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        alert("Error submitting reservation.");
+      }
+    });
+  </script>
+  <footer>
+    <p style="color: rgb(225, 212, 193);">&copy BitPix Studios 2025</p>
+   </footer>
+</body>
+</html>
+
+
+
+
+<!---
+<div class="container">
+ <p>
+   <label for="name">Name:</label>
+   <input type="text" name="name" id="name">
+ </p>
+ <p>
+   <label for="pricing">Pricing:</label>
+   <input type="text" name="pricing" id="pricing">
+ </p>
+ <p>
+   <label for="partySize">Party Size:</label>
+   <input type="text" name="partySize" id="partySize">
+ </p>
+ <p>
+   <label for="location">Location:</label>
+   <input type="text" name="location" id="location">
+ </p>
+ <p>
+   <label for="date">Date:</label>
+   <input type="text" name="date" id="date">
+ </p>
+ <p>
+   <label for="time">Time:</label>
+   <input type="text" name="time" id="time">
+ </p>
+ <p>
+   <label for="phoneNum">Phone Number:</label>
+   <input type="text" name="phoneNum" id="phoneNum">
+ </p>
+ <p>
+   <label for="email">Email:</label>
+   <input type="text" name="email" id="email">
+ </p>
+ <p>
+   <label for="any">Notes/Anything We Should Know?:</label>
+   <input type="text" name="any" id="any">
+ </p>
+
+
+
+
+
+
+
+
+ <input type="submit">
+</div>
+
+--->
+
+
+</body>
